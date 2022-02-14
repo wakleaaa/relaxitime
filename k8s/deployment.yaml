@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: relaxitime
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: relaxitime
+  template:
+    metadata:
+      labels:
+        app: relaxitime
+    spec:
+      containers:
+      - image: okteto.dev/relaxitime:latest
+        name: relaxitime
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: ProxySite
+          value: "mirror.umd.edu"
+        - name: Vless_UUID
+          value: "f80be014-c967-46fc-892b-f1bde2fa8408"
+        - name: Vless_Path
+          value: "/awaeo"
+        - name: Vmess_UUID
+          value: "f5279078-6b41-4fe8-b432-c41517249546"
+        - name: Vmess_Path
+          value: "/ea23a"
+        - name: Share_Path
+          value: "/Share665"
